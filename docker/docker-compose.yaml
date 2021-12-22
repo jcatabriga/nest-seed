@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: shoulders_db
+    image: postgres:13-alpine
+    ports:
+      - 5434:5432
+    environment:
+      - POSTGRES_PASSWORD=strongpassword
+      - POSTGRES_USER=root
+      - POSTGRES_DB=shoulders
