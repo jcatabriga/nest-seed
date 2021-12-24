@@ -32,7 +32,7 @@ async function createUsersAndRoles() {
   await prisma.role.create({
     data: {
       name: 'admin',
-      User: {
+      users: {
         connect: {
           id: ADMIN_ID,
         },
