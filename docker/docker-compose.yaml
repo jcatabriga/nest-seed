@@ -10,3 +10,5 @@ services:
       - POSTGRES_PASSWORD=strongpassword
       - POSTGRES_USER=root
       - POSTGRES_DB=shoulders
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
