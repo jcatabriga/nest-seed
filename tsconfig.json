@@ -18,7 +18,13 @@
     "noFallthroughCasesInSwitch": false,
     "baseUrl": "src",
     "paths": {
+      "@users/": ["./users/"],
       "@users/*": ["./users/*"],
+      "@roles/": ["./roles/"],
+      "@roles/*": ["./roles/*"],
+      "@contacts/": ["./contacts/"],
+      "@contacts/*": ["./contacts/*"],
+      "@utils/": ["./utils/"],
       "@utils/*": ["./utils/*"]
     }
   }

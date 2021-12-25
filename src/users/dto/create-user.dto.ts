@@ -1,9 +1,12 @@
+import { Type } from 'class-transformer';
 import {
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
 
 export class CreateUserDto {
@@ -31,4 +34,14 @@ export class CreateUserDto {
   @MaxLength(20)
   @MinLength(8)
   password: string;
+
+  @IsOptional()
+  avatar: string;
+}
+
+export class BatchCreateUserDTO {
+  @IsNotEmpty()
+  @Type(() => CreateUserDto)
+  @ValidateNested({ each: true })
+  users: CreateUserDto[];
 }
