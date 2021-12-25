@@ -1,11 +1,16 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Shoulders: Nest Seed
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div display="flex" align="center" justify="space-between" flex="auto">
+<img src="./.github/images/Shoulders-Icon.svg" width="128" alt="Shoulders Logo" >
+
+<p align="center">A smart organization that aims to facilitate the understanding of complexity</p>
+<br>
+<br>
+
+<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+</div>  
     
 ## Description
 
@@ -43,31 +48,44 @@ $ yarn install
 $ docker-compose up -d
 ```
 
+## Run Migrations
+
+```bash
+# You can edit prisma/schema.prisma before run (optional)
+$ npx prisma migrate dev
+```
+
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run dev
+$ yarn dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
 ## Test
 
 ```bash
 # unit tests
-$ npm run test
+$ yarn test
 
 # e2e tests
-$ npm run test:e2e
+$ yarn test:e2e
 
 # test coverage
-$ npm run test:cov
+$ yarn test:cov
 ```
+
+## Swagger
+
+To view the documentation just access http://localhost:3000/api while the project is running
+
+You can edit this URL configuration at file `config/app.ts`
 
 ## Support
 

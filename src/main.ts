@@ -8,14 +8,9 @@ import { AppModule } from './app.module';
 
 async function createSwaggerConfig(app: INestApplication) {
   const config = new DocumentBuilder()
-    .setTitle('Shoulders')
-    .setDescription(
-      `**The Shoulders API** <br>
-        Here you can access and run all application endpoints. <br>
-        If you are a developer, look at the default to always keep it.
-    `,
-    )
-    .setVersion('1.0')
+    .setTitle(appConfig.SWAGGER.title)
+    .setDescription(appConfig.SWAGGER.description)
+    .setVersion(appConfig.SWAGGER.version)
     .addTag('users')
     .addTag('roles')
     .addTag('contacts')
