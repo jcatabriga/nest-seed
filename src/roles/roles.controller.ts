@@ -12,8 +12,10 @@ import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { Prisma } from '@prisma/client';
-import { ParseQueryNumberPipe } from 'pipes/ParseQueryNumberPipe.pipe';
+import { ParseQueryNumberPipe } from 'common/pipes/ParseQueryNumberPipe.pipe';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('roles')
 @Controller('roles')
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}

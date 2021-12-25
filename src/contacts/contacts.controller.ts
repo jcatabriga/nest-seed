@@ -8,12 +8,14 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { Prisma } from '@prisma/client';
-import { ParseQueryNumberPipe } from 'pipes/ParseQueryNumberPipe.pipe';
+import { ParseQueryNumberPipe } from 'common/pipes/ParseQueryNumberPipe.pipe';
 import { ContactsService } from './contacts.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 import { UpdateContactDto } from './dto/update-contact.dto';
 
+@ApiTags('contacts')
 @Controller('contacts')
 export class ContactsController {
   constructor(private readonly contactsService: ContactsService) {}

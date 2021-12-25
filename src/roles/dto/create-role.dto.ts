@@ -1,4 +1,3 @@
-import { ContactType } from '@contacts/entities/contact.entity';
 import { Type } from 'class-transformer';
 import { IsNotEmpty, IsString, ValidateNested } from 'class-validator';
 

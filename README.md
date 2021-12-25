@@ -13,15 +13,21 @@ A Seed to start a Nest application easily with some features already configured
 
 Our Features:
 
+- CORS and Helmet Configured
+- eslint and prettier configured
 - Prisma Configured
-- Docker Compose with PostgresSQL
+- Docker Compose with PostgresSQL to development
 - Docs with Swagger
+- Timeout interceptor
 - Validation with class validators
+- Pipe to modify numeric request queries
+- Useful DTOs to filter requests
 
 Future features:
 
+- Authorization and authentication with Guards
 - Cookies
-- Authorization and authentication
+- Auth decorator grouping
 - Logging
 - Middlewares
 

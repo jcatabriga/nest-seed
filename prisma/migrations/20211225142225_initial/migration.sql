@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "ContactEnum" AS ENUM ('PHONE', 'EMAIL', 'FACEBOOK', 'TWITTER', 'INSTAGRAM', 'LINKEDIN', 'GITHUB', 'WEBSITE');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -27,7 +30,7 @@ CREATE TABLE "Role" (
 -- CreateTable
 CREATE TABLE "Contact" (
     "id" TEXT NOT NULL,
-    "name" TEXT NOT NULL,
+    "type" "ContactEnum" NOT NULL,
     "value" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3),
