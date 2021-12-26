@@ -42,6 +42,9 @@ export class UsersController {
         email: true,
         createdAt: true,
       },
+      where: {
+        deletedAt: null,
+      },
     });
   }
 

@@ -36,6 +36,9 @@ export class ContactsController {
       skip,
       take: take <= 100 ? take : 10,
       orderBy,
+      where: {
+        deletedAt: null,
+      },
     });
   }
 

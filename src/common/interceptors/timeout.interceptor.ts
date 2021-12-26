@@ -6,6 +6,7 @@ import {
   CallHandler,
   RequestTimeoutException,
   Logger,
+  BadRequestException,
 } from '@nestjs/common';
 import { Observable, TimeoutError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
@@ -23,11 +24,14 @@ export class TimeoutInterceptor implements NestInterceptor {
     return next.handle().pipe(
       timeout(appConfig.TIMEOUT),
       catchError((err) => {
-        this.logger.error(timeoutPhrase);
         if (err instanceof TimeoutError) {
+          this.logger.error(timeoutPhrase);
           throw new RequestTimeoutException(timeoutPhrase);
         }
-        return new err(timeoutPhrase);
+        if (err.status >= 400 || err.status < 500) {
+          throw new BadRequestException(err.response.message);
+        }
+        throw new Error(err.message);
       }),
     );
   }

@@ -12,29 +12,53 @@
   <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
 </div>  
     
+<br><hr>
+
 ## Description
 
-A Seed to start a Nest application easily with some features already configured
+🚀 This ia a seed to start a Nest application easily with useful features already configured!
 
-Our Features:
+<hr>
 
-- CORS and Helmet Configured
-- eslint and prettier configured
-- Prisma Configured
-- Docker Compose with PostgresSQL to development
-- Docs with Swagger
-- Timeout interceptor
-- Validation with class validators
-- Pipe to modify numeric request queries
-- Useful DTOs to filter requests
+### Our Features:
 
-Future features:
+- Security:
+  - CORS
+  - Helmet
+- Facilitators
+  - eslint and prettier configured
+  - Prisma Configured
+  - Docker Compose with PostgresSQL to development
+- Features
+  - Pipe to modify numeric request queries
+  - Timeout interceptor
+  - Docs with Swagger
+  - Validation with class validators
+  - Useful DTOs to filter requests
 
-- Authorization and authentication with Guards
+### Working on:
+
 - Cookies
-- Auth decorator grouping
-- Logging
-- Middlewares
+- Authorization and authentication with CASL
+
+### Future features:
+
+- Security:
+  - Rate Limiting
+  - CSRF Protection
+- Facilitators
+  - Auth decorator that group auth logical
+- Features
+  - Logging
+  - File Upload
+
+### Analyzing:
+
+- GraphQL Branch
+- Websocket Branch
+- Microservice (gRPC) Branch
+
+<hr>
 
 ## Installation
 
@@ -81,11 +105,23 @@ $ yarn test:e2e
 $ yarn test:cov
 ```
 
+<hr>
+
+## Import Insomnia
+
+If you use the `insomnia` to test your requests we have prepared a configured file to start testing our API.
+
+<!-- Button Here -->
+
+<br><hr>
+
 ## Swagger
 
 To view the documentation just access http://localhost:3000/api while the project is running
 
 You can edit this URL configuration at file `config/app.ts`
+
+<hr>
 
 ## Support
 
