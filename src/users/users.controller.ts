@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Prisma } from '@prisma/client';
-import { ParseQueryNumberPipe } from 'common/pipes/parseQueryNumber.pipe';
+import { ParseQueryNumberPipe } from 'common/pipes/parse-query-number.pipe';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';

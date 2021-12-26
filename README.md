@@ -25,6 +25,7 @@
 - Security:
   - CORS
   - Helmet
+  - Rate Limiting
 - Facilitators
   - eslint and prettier configured
   - Prisma Configured
@@ -35,19 +36,17 @@
   - Docs with Swagger
   - Validation with class validators
   - Useful DTOs to filter requests
+  - Cookies
 
 ### Working on:
 
-- Cookies
 - Authorization and authentication with CASL
+  - Auth decorator that group auth logical
 
-### Future features:
+### Future:
 
 - Security:
-  - Rate Limiting
   - CSRF Protection
-- Facilitators
-  - Auth decorator that group auth logical
 - Features
   - Logging
   - File Upload

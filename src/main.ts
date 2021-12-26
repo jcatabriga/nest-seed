@@ -3,6 +3,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { TimeoutInterceptor } from 'common/interceptors/timeout.interceptor';
+import * as cookieParser from 'cookie-parser';
 import * as helmet from 'helmet';
 import { AppModule } from './app.module';
 
@@ -22,11 +23,12 @@ async function createSwaggerConfig(app: INestApplication) {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   app.use(helmet());
-
-  createSwaggerConfig(app);
+  app.use(cookieParser());
 
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalInterceptors(new TimeoutInterceptor());
+
+  createSwaggerConfig(app);
 
   await app.listen(appConfig.PORT);
 }

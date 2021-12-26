@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -18,10 +18,14 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    return await this.prisma.user.create({
-      data: createUserDto,
-      select: this.SELECT_USER_FIELDS,
-    });
+    try {
+      return await this.prisma.user.create({
+        data: createUserDto,
+        select: this.SELECT_USER_FIELDS,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async findAll(where?: Prisma.UserFindManyArgs) {
@@ -38,24 +42,32 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    return await this.prisma.user.update({
-      where: {
-        id,
-      },
-      data: updateUserDto,
-      select: this.SELECT_USER_FIELDS,
-    });
+    try {
+      return await this.prisma.user.update({
+        where: {
+          id,
+        },
+        data: updateUserDto,
+        select: this.SELECT_USER_FIELDS,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async remove(id: string) {
-    return await this.prisma.user.update({
-      where: {
-        id,
-      },
-      data: {
-        deletedAt: new Date(),
-      },
-      select: this.SELECT_USER_FIELDS,
-    });
+    try {
+      return await this.prisma.user.update({
+        where: {
+          id,
+        },
+        data: {
+          deletedAt: new Date(),
+        },
+        select: this.SELECT_USER_FIELDS,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 }

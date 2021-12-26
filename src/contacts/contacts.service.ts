@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { CreateContactDto } from './dto/create-contact.dto';
@@ -9,9 +9,13 @@ export class ContactsService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createContactDto: CreateContactDto) {
-    return await this.prisma.contact.create({
-      data: createContactDto,
-    });
+    try {
+      return await this.prisma.contact.create({
+        data: createContactDto,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async findAll(where?: Prisma.ContactFindManyArgs) {
@@ -27,22 +31,30 @@ export class ContactsService {
   }
 
   async update(id: string, updateContactDto: UpdateContactDto) {
-    return await this.prisma.contact.update({
-      where: {
-        id,
-      },
-      data: updateContactDto,
-    });
+    try {
+      return await this.prisma.contact.update({
+        where: {
+          id,
+        },
+        data: updateContactDto,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async remove(id: string) {
-    return await this.prisma.contact.update({
-      where: {
-        id,
-      },
-      data: {
-        deletedAt: new Date(),
-      },
-    });
+    try {
+      return await this.prisma.contact.update({
+        where: {
+          id,
+        },
+        data: {
+          deletedAt: new Date(),
+        },
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 }

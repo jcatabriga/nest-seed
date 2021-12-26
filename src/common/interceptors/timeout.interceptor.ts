@@ -1,21 +1,21 @@
 import { appConfig } from '@config/app';
 import {
-  Injectable,
-  NestInterceptor,
-  ExecutionContext,
-  CallHandler,
-  RequestTimeoutException,
-  Logger,
   BadRequestException,
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  Logger,
+  NestInterceptor,
+  RequestTimeoutException,
 } from '@nestjs/common';
-import { Observable, TimeoutError } from 'rxjs';
+import { TimeoutError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 
 @Injectable()
 export class TimeoutInterceptor implements NestInterceptor {
   private readonly logger = new Logger('TimeoutInterceptor');
 
-  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+  intercept(context: ExecutionContext, next: CallHandler) {
     const [req] = context.getArgs();
     const { url, method } = req;
 

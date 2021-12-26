@@ -12,7 +12,7 @@ import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
 import { Prisma } from '@prisma/client';
-import { ParseQueryNumberPipe } from 'common/pipes/parseQueryNumber.pipe';
+import { ParseQueryNumberPipe } from 'common/pipes/parse-query-number.pipe';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('roles')

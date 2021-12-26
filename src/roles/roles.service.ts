@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from 'prisma/prisma.service';
 import { CreateRoleDto } from './dto/create-role.dto';
@@ -9,9 +9,13 @@ export class RolesService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(createRoleDto: CreateRoleDto) {
-    return await this.prisma.role.create({
-      data: createRoleDto,
-    });
+    try {
+      return await this.prisma.role.create({
+        data: createRoleDto,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async findAll(where?: Prisma.RoleFindManyArgs) {
@@ -27,22 +31,30 @@ export class RolesService {
   }
 
   async update(id: string, updateRoleDto: UpdateRoleDto) {
-    return await this.prisma.role.update({
-      where: {
-        id,
-      },
-      data: updateRoleDto,
-    });
+    try {
+      return await this.prisma.role.update({
+        where: {
+          id,
+        },
+        data: updateRoleDto,
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 
   async remove(id: string) {
-    return await this.prisma.role.update({
-      where: {
-        id,
-      },
-      data: {
-        deletedAt: new Date(),
-      },
-    });
+    try {
+      return await this.prisma.role.update({
+        where: {
+          id,
+        },
+        data: {
+          deletedAt: new Date(),
+        },
+      });
+    } catch (e) {
+      throw new BadRequestException(`Error in ${e.meta.cause}`);
+    }
   }
 }

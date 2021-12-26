@@ -9,4 +9,8 @@ export const appConfig = {
     `,
     version: '1.0',
   },
+  RATE_LIMITERS: {
+    ttl: Number(process.env.RATE_LIMITERS_TTL) || 60,
+    limit: Number(process.env.RATE_LIMITERS_LIMIT) || 100,
+  },
 };
