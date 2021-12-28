@@ -1,4 +1,3 @@
-import { appConfig } from '@config/app';
 import {
   BadRequestException,
   CallHandler,
@@ -7,6 +6,7 @@ import {
   Logger,
   NestInterceptor,
   RequestTimeoutException,
+  InternalServerErrorException,
 } from '@nestjs/common';
 import { TimeoutError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
@@ -19,10 +19,12 @@ export class TimeoutInterceptor implements NestInterceptor {
     const [req] = context.getArgs();
     const { url, method } = req;
 
-    const timeoutPhrase = `${appConfig.TIMEOUT}ms timeout on ${method} ${url}`;
+    const timeoutTime = Number(process.env.TIMEOUT) || 8000;
+
+    const timeoutPhrase = `${timeoutTime}ms timeout on ${method} ${url}`;
 
     return next.handle().pipe(
-      timeout(appConfig.TIMEOUT),
+      timeout(timeoutTime),
       catchError((err) => {
         if (err instanceof TimeoutError) {
           this.logger.error(timeoutPhrase);
@@ -31,7 +33,7 @@ export class TimeoutInterceptor implements NestInterceptor {
         if (err.status >= 400 || err.status < 500) {
           throw new BadRequestException(err.response.message);
         }
-        throw new Error(err.message);
+        throw new InternalServerErrorException(err);
       }),
     );
   }

@@ -36,12 +36,6 @@ export class UsersController {
       skip,
       take: take <= 100 ? take : 10,
       orderBy,
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        createdAt: true,
-      },
       where: {
         deletedAt: null,
       },
@@ -50,7 +44,7 @@ export class UsersController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+    return this.usersService.findOne({ id });
   }
 
   @Patch(':id')

@@ -1,7 +1,7 @@
-FROM node:16
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-WORKDIR /usr/src/app
+FROM node:16 AS builder
+ENV NODE_ENV build
+
+WORKDIR /app
 
 COPY package*.json ./
 COPY yarn.lock ./
@@ -15,9 +15,11 @@ COPY . .
 RUN yarn build
 
 FROM node:16
+ENV NODE_ENV production
 
+COPY --from=builder /app/yarn.lock ./node/
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
-CMD ["node", "dist/main"]
+CMD ["node", "dist/src/main.js"]

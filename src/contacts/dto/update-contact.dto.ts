@@ -1,5 +1,5 @@
 import { Contact } from '@contacts/entities/contact.entity';
-import { PartialType } from '@nestjs/swagger';
+import { PartialType } from '@nestjs/mapped-types';
 import { CreateContactDto } from './create-contact.dto';
 
 export class UpdateContactDto extends PartialType(CreateContactDto) {
