@@ -37,6 +37,10 @@
   - Validation with class validators
   - Useful DTOs to filter requests
   - Cookies
+- Resources
+  - Users
+  - Roles
+  - Contacts
 
 ### Working on:
 
