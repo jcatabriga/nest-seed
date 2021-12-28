@@ -114,7 +114,7 @@ $ yarn test:cov
 
 If you use the `insomnia` to test your requests we have prepared a configured file to start testing our API.
 
-<!-- Button Here -->
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Shoulders%20Seed&uri=https%3A%2F%2Fgithub.com%2FEureka-Shoulders%2Fnest-seed%2Fblob%2Fmain%2F.github%2Finsomnia.json)
 
 <br><hr>
 
