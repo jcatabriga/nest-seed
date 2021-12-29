@@ -71,18 +71,24 @@ $ yarn install
 
 ## Start database
 
+**If you want to run the application and database with docker just run the following command:**
+
 ```bash
-$ docker-compose up -d
+$ yarn dev:docker
 ```
 
-## Run Migrations
+**If you want to run only the database**
 
 ```bash
+$ yarn dev:docker:db
+
 # You can edit prisma/schema.prisma before run (optional)
 $ npx prisma migrate dev
 ```
 
 ## Running the app
+
+**Not necessary if the application was started with docker in the above command**
 
 ```bash
 # development
@@ -116,7 +122,7 @@ If you use the `insomnia` to test your requests we have prepared a configured fi
 
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=Shoulders%20Seed&uri=https%3A%2F%2Fgithub.com%2FEureka-Shoulders%2Fnest-seed%2Fblob%2Fmain%2F.github%2Finsomnia.json)
 
-<br><hr>
+<hr>
 
 ## Swagger
 
