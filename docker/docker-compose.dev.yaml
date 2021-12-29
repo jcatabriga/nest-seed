@@ -27,7 +27,7 @@ services:
     links:
       - postgres
     environment:
-      - DATABASE_URL=postgres://root:strongpassword@postgres:5432/shoulders
+      - DATABASE_URL=postgres://root:strongpassword@postgres:5432/shoulders_db?schema=public
       - JWT_SECRET=secret
     volumes:
       - .:/app

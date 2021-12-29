@@ -20,7 +20,9 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "dev:docker": "docker-compose -f docker/docker-compose.dev.yaml up -d",
-    "dev:docker:db": "docker-compose -f docker/docker-compose.db-dev.yaml up -d"
+    "dev:docker:db": "docker-compose -f docker/docker-compose.db-dev.yaml up -d",
+    "dev:stop": "docker-compose -f docker/docker-compose.dev.yaml down",
+    "dev:stop:db": "docker-compose -f docker/docker-compose.db-dev.yaml down"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
